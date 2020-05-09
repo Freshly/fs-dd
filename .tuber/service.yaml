@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: fs-dd
+spec:
+  ports:
+  - port: 9292
+    name: http
+  selector:
+    app: fs-dd

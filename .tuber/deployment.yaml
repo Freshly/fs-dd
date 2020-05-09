@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: fs-dd
+  name: fs-dd
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fs-dd
+  template:
+    metadata:
+      labels:
+        app: fs-dd
+    spec:
+      containers:
+      - image: {{.tuberImage}}
+        name: fs-dd
+        envFrom:
+          - secretRef:
+              name: fs-dd-env
+        ports:
+          - containerPort: 9292
